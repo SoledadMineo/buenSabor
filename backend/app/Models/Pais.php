@@ -13,6 +13,6 @@ class Pais extends Model
 
     public function provincias()
     {
-        return $this->hasMany(Provincia::class, 'pais_id');
+        return $this->hasMany(Provincia::class);
     }
 }

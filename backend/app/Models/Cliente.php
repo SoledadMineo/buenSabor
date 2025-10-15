@@ -10,4 +10,14 @@ class Cliente extends Model
     use HasFactory;
 
     protected $fillable = ['nombre', 'apellido', 'telefono', 'email'];
+
+    public function domicilio()
+    {
+        return $this->hasOne(Domicilio::class);
+    }
+
+    public function usuario()
+    {
+        return $this->hasOne(Usuario::class);
+    }
 }

@@ -12,6 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('authOId');
             $table->string('username');
+            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');
+            $table->foreign('empleado_id')->references('id')->on('empleado')->onDelete('cascade');
             $table->timestamps();
         });
     }

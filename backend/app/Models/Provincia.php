@@ -13,7 +13,7 @@ class Provincia extends Model
 
     public function pais()
     {
-        return $this->belongsTo(Pais::class, 'pais_id');
+        return $this->belongsTo(Pais::class);
     }
 
     public function localidades()

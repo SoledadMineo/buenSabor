@@ -6,20 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('datos_mercado_pago', function (Blueprint $table) {
             $table->id();
+            $table->date('date_created');
+            $table->date('date_approved');
+            $table->date('date_last_updated');
+            $table->integer('payment_type_id');
+            $table->integer('payment_method_id');
+            $table->string('status');
+            $table->string('status_detail');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('datos_mercado_pago');

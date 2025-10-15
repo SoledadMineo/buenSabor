@@ -18,6 +18,16 @@ class SucursalEmpresa extends Model
 
     public function domicilio()
     {
-        return $this->belongsTo(Domicilio::class, 'domicilio_id');
+        return $this->hasOne(Domicilio::class);
+    }
+
+    public function pedidosVenta()
+    {
+        return $this->hasMany(PedidoVenta::class, 'sucursal_empresa_id');
+    }
+
+    public function sucursalesInsumos()
+    {
+        return $this->hasMany(SucursalInsumo::class, 'sucursal_empresa_id');
     }
 }

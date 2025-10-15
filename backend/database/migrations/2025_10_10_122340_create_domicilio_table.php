@@ -13,7 +13,9 @@ return new class extends Migration
             $table->string('calle');
             $table->integer('numero');
             $table->integer('cp');
-            $table->foreignId('localidad_id')->constrained('localidades');
+            $table->foreignId('sucursalEmpresa_id')->constrained('sucursal_empresa');
+            $table->foreignId('localidad_id')->constrained('localidad');
+            $table->foreignId('cliente_id')->constrained('cliente');
             $table->timestamps();
         });
     }

@@ -15,4 +15,9 @@ class Empleado extends Model
     protected $casts = [
         'perfil' => Rol::class,
     ];
+
+    public function pedidos()
+    {
+        return $this->hasMany(PedidoVenta::class);
+    }
 }

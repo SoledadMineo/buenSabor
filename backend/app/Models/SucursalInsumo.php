@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SucursalInsumo extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['stockActual', 'stockMinimo', 'stockMaximo'];
+
+    public function sucursalEmpresa()
+    {
+        return $this->belongsTo(SucursalEmpresa::class, 'sucursal_empresa_id');
+    }
 }

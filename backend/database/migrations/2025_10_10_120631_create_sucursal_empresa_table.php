@@ -13,10 +13,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('horarioApertura');
             $table->string('horarioCierre');
-            $table->foreignId('empresa_id')
-                ->constrained('empresas')
-                ->onDelete('cascade');
-            $table->foreignId('domicilio_id')->constrained('domicilios');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }
