@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('datos_mercado_pago', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('factura_venta_id')->constrained('factura_venta')->onDelete('cascade');
             $table->date('date_created');
             $table->date('date_approved');
             $table->date('date_last_updated');

@@ -10,6 +10,9 @@ return new class extends Migration
     {
         Schema::create('pedido_venta_detalle', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pedido_venta_id')->constrained('pedido_venta')->onDelete('cascade');
+            $table->foreignId('articulo_manufacturado_id')->nullable()->constrained('articulo_manufacturado')->onDelete('set null');
+            $table->foreignId('promocion_id')->nullable()->constrained('promocion')->onDelete('set null');
             $table->double('cantidad');
             $table->double('subtotal');
             $table->timestamps();

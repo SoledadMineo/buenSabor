@@ -8,4 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoVentaDetalle extends Model
 {
     use HasFactory;
+
+    protected $table = 'pedido_venta_detalle';
+
+    protected $fillable = ['cantidad', 'subtotal'];
+
+    public function pedidoVenta()
+    {
+        return $this->belongsTo(PedidoVenta::class, 'pedido_venta_id');
+    }
+
+    public function articuloManufacturado()
+    {
+        return $this->belongsTo(ArticuloManufacturado::class, 'articulo_manufacturado_id');
+    }
+
+    public function promocion()
+    {
+        return $this->belongsTo(Promocion::class, 'promocion_id');
+    }
+
+
 }

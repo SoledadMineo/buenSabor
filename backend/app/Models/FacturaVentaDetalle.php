@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class FacturaVentaDetalle extends Model
 {
     use HasFactory;
+
+    protected $table = 'factura_venta_detalle';
+
+    protected $fillable = ['cantidad', 'subtotal'];
+
+    public function FacturaVenta()
+    {
+        return $this->belongsTo(FacturaVenta::class, 'factura_venta_id');
+    }
 }

@@ -18,4 +18,13 @@ class FacturaVenta extends Model
         return $this->belongsTo(PedidoVenta::class);
     }
 
+    public function detalles()
+    {
+        return $this->hasMany(FacturaVentaDetalle::class, 'factura_venta_id');
+    }
+
+    public function datosMercadoPago()
+    {
+        return $this->hasOne(DatosMercadoPago::class, 'factura_venta_id');
+    }
 }

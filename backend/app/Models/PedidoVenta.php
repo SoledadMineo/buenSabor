@@ -28,4 +28,8 @@ class PedidoVenta extends Model
         return $this->hasMany(FacturaVenta::class);
     }
 
+    public function detalles()
+    {
+        return $this->hasMany(PedidoVentaDetalle::class, 'pedido_venta_id');
+    }
 }
