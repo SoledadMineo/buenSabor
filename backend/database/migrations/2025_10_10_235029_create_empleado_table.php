@@ -18,6 +18,7 @@ return new class extends Migration
                 'admin',
                 'empleado',
                 'cliente'])->default('admin');
+            $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade');
             $table->timestamps();
         });
     }

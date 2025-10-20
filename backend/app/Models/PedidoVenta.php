@@ -9,9 +9,9 @@ class PedidoVenta extends Model
 {
     use HasFactory;
 
-    protected $table = 'pedido_ventas';
+    protected $table = 'pedido_venta';
 
-    protected $fillable = ['horaEstimadaFinalizacion', 'subtotal', 'descuento', 'gastosEnvio', 'total', 'totalCosto', 'estado', 'tipoEnvio', 'formaPago', 'fechaPedido'];
+    protected $fillable = ['horaEstimadaFinalizacion', 'subtotal', 'descuento', 'gastosEnvio', 'total', 'totalCosto', 'estado', 'tipoEnvio', 'formaPago', 'fechaPedido', 'sucursal_empresa_id', 'empleado_id'];
 
     public function sucursalEmpresa()
     {
@@ -25,7 +25,7 @@ class PedidoVenta extends Model
 
     public function facturas()
     {
-        return $this->hasMany(FacturaVenta::class);
+        return $this->hasOne(FacturaVenta::class);
     }
 
     public function detalles()

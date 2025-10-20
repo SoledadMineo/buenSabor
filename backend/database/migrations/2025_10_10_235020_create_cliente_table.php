@@ -14,6 +14,8 @@ return new class extends Migration
             $table->string('apellido');
             $table->integer('telefono');
             $table->string('email');
+            $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade');
+            $table->foreignId('domicilio_id')->constrained('domicilio')->onDelete('cascade');
             $table->timestamps();
         });
     }

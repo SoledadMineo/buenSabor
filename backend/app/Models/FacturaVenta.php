@@ -11,7 +11,7 @@ class FacturaVenta extends Model
 
     protected $table = 'factura_venta';
 
-    protected $fillable = ['fechaFacturacion', 'numeroComprobante', 'formaPago', 'subtotal', 'descuento', 'gastosEnvio', 'totalVenta'];
+    protected $fillable = ['fechaFacturacion', 'numeroComprobante', 'formaPago', 'subtotal', 'descuento', 'gastosEnvio', 'totalVenta', 'pedido_venta_id'];
 
     public function pedidoVenta()
     {

@@ -11,6 +11,8 @@ class Pais extends Model
 
     protected $fillable = ['nombre'];
 
+    protected $table = 'pais';
+
     public function provincias()
     {
         return $this->hasMany(Provincia::class);

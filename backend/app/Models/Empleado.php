@@ -12,6 +12,8 @@ class Empleado extends Model
 
     protected $fillable = ['nombre', 'apellido', 'telefono', 'email', 'perfil'];
 
+    protected $table = 'empleado';
+
     protected $casts = [
         'perfil' => Rol::class,
     ];
@@ -20,4 +22,10 @@ class Empleado extends Model
     {
         return $this->hasMany(PedidoVenta::class);
     }
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+
 }

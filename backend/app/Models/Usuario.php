@@ -11,13 +11,15 @@ class Usuario extends Model
 
     protected $fillable = ['authOId', 'username'];
 
+    protected $table = 'usuario';
+
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->hasOne(Cliente::class);
     }
 
     public function empleado()
     {
-        return $this->belongsTo(Empleado::class);
+        return $this->hasOne(Empleado::class);
     }
 }

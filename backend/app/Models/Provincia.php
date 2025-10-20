@@ -9,7 +9,9 @@ class Provincia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre','pais_id'];
+
+    protected $table = 'provincia';
 
     public function pais()
     {

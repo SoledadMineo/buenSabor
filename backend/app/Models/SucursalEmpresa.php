@@ -9,11 +9,13 @@ class SucursalEmpresa extends Model
 {
     use HasFactory;
 
+    protected $table = 'sucursal_empresa';
+
     protected $fillable = ['nombre', 'horarioApertura', 'horarioCierre', 'empresa_id'];
 
     public function empresa()
     {
-        return $this->belongsTo(Empresa::class, 'empresa_id');
+        return $this->belongsTo(Empresa::class);
     }
 
     public function domicilio()
@@ -23,7 +25,7 @@ class SucursalEmpresa extends Model
 
     public function pedidosVenta()
     {
-        return $this->hasMany(PedidoVenta::class, 'sucursal_empresa_id');
+        return $this->hasMany(PedidoVenta::class);
     }
 
     public function sucursalesInsumos()

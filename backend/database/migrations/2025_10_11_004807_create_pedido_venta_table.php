@@ -32,7 +32,7 @@ return new class extends Migration
                 'MercadoPago'
                 ])->default('efectivo');
             $table->date('fechaPedido');
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
+            $table->foreignId('sucursal_empresa_id')->constrained('sucursal_empresas')->onDelete('cascade');
             $table->foreignId('empleado_id')->constrained('empleado')->onDelete('cascade');
             $table->timestamps();
         });

@@ -9,15 +9,18 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'apellido', 'telefono', 'email'];
+    protected $fillable = ['nombre', 'apellido', 'telefono', 'email', 'usuario_id', 'domicilio_id'];
+
+    protected $table = 'cliente';
 
     public function domicilio()
     {
-        return $this->hasOne(Domicilio::class);
+        return $this->belongsTo(Domicilio::class);
     }
 
     public function usuario()
     {
-        return $this->hasOne(Usuario::class);
+        return $this->belongsTo(Usuario::class);
     }
+
 }
