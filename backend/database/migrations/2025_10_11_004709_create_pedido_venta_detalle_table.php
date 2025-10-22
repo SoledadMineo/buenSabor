@@ -13,6 +13,7 @@ return new class extends Migration
             $table->foreignId('pedido_venta_id')->constrained('pedido_venta')->onDelete('cascade');
             $table->foreignId('articulo_manufacturado_id')->nullable()->constrained('articulo_manufacturado')->onDelete('set null');
             $table->foreignId('promocion_id')->nullable()->constrained('promocion')->onDelete('set null');
+            $table->foreignId('articulo_insumo_id')->constrained('articulo_insumo')->onDelete('cascade');
             $table->double('cantidad');
             $table->double('subtotal');
             $table->timestamps();

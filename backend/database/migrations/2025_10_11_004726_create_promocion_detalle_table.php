@@ -13,6 +13,7 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->foreignId('promocion_id')->constrained('promocion')->onDelete('cascade');
             $table->foreignId('articulo_manufacturado_id')->constrained('articulo_manufacturado')->onDelete('cascade');
+            $table->foreignId('articulo_insumo_id')->constrained('articulo_insumo')->onDelete('cascade');            
             $table->timestamps();
         });
     }

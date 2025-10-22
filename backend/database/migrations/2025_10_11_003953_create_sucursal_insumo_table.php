@@ -14,6 +14,7 @@ return new class extends Migration
             $table->integer('stockMinimo');
             $table->integer('stockMaximo');
             $table->foreign('sucursal_empresa_id')->references('id')->on('sucursal_empresas')->onDelete('cascade');
+            $table->foreign('articulo_insumo_id')->references('id')->on('articulo_insumo')->onDelete('cascade');
             $table->timestamps();
         });
     }

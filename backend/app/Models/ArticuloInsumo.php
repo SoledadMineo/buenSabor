@@ -19,6 +19,7 @@ class ArticuloInsumo extends Model
         'categoria_articulo_id',
         'imagen_insumo_id',
         'unidad_medida_id',
+        'padre_id'
     ];
 
     public function categoria()
@@ -34,5 +35,40 @@ class ArticuloInsumo extends Model
     public function unidadMedida()
     {
         return $this->belongsTo(UnidadMedida::class, 'unidad_medida_id');
+    }
+
+    public function padre()
+    {
+        return $this->belongsTo(ArticuloInsumo::class, 'padre_id'); 
+    }
+
+    public function hijo()
+    {
+        return $this->hasMany(ArticuloInsumo::class, 'padre_id');
+    }
+
+    public function articulosManufacturadosDetalle()
+    {
+        return $this->hasMany(ArticuloManufacturadoDetalle::class);
+    }
+
+    public function facturaVentaDetalles()
+    {
+        return $this->hasMany(FacturaVentaDetalle::class);
+    }
+
+    public function pedidoVentaDetalles()
+    {
+        return $this->hasMany(PedidoVentaDetalle::class);
+    }
+
+    public function promocionDetalles()
+    {
+        return $this->hasMany(PromocionDetalle::class);
+    }
+
+    public function sucursales()
+    {
+        return $this->hasMany(SucursalInsumo::class);
     }
 }

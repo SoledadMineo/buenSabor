@@ -11,7 +11,7 @@ class PedidoVentaDetalle extends Model
 
     protected $table = 'pedido_venta_detalle';
 
-    protected $fillable = ['pedido_venta_id', 'articulo_manufacturado_id', 'promocion_id', 'cantidad', 'subtotal'];
+    protected $fillable = ['pedido_venta_id', 'articulo_manufacturado_id', 'promocion_id', 'articulo_insumo_id', 'cantidad', 'subtotal'];
 
     public function pedidoVenta()
     {
@@ -28,5 +28,8 @@ class PedidoVentaDetalle extends Model
         return $this->belongsTo(Promocion::class, 'promocion_id');
     }
 
-
+    public function articuloInsumo()
+    {
+        return $this->belongsTo(ArticuloInsumo::class);
+    }
 }

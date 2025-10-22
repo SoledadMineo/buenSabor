@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('categoria_articulo_id')->constrained('categoria_articulo')->onDelete('cascade');
             $table->foreignId('imagen_insumo_id')->constrained('imagen_insumo')->onDelete('cascade');
             $table->foreignId('unidad_medida_id')->constrained('unidad_medida')->onDelete('cascade');
+            $table->foreignId('padre_id')->nullable()->constrained('articulo_insumos')->onDelete('set null');
             $table->timestamps();
         });
     }
