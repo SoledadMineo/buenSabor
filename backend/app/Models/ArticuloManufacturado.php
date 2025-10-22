@@ -9,13 +9,18 @@ class ArticuloManufacturado extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['denominacion', 'descripcion', 'precioVenta', 'precioCosto', 'tiempoEstimado'];
+    protected $fillable = ['denominacion', 'descripcion', 'precioVenta', 'precioCosto', 'tiempoEstimado', 'categoria_id'];
 
     protected $table = 'articulo_manufacturado';
 
     public function pedidoVentaDetalles()
     {
         return $this->hasMany(PedidoVentaDetalle::class);
+    }
+
+    public function facturaVentaDetalle()
+    {
+        return $this->hasMany(facturaVentaDetalle::class);
     }
 
     public function detalles()
@@ -31,6 +36,11 @@ class ArticuloManufacturado extends Model
     public function imagenes()
     {
         return $this->hasMany(ImagenManufacturado::class);
+    }
+
+    public function promocionDetalles()
+    {
+        return $this->hasMany(PromocionDetalle::class, 'articulo_manufacturado_id');
     }
 
     public function precioCostoCalculado()

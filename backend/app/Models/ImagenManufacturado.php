@@ -9,7 +9,7 @@ class ImagenManufacturado extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['denominacion'];
+    protected $fillable = ['denominacion', 'articulo_manufacturado_id'];
 
     protected $table = 'imagen_manufacturado';
 

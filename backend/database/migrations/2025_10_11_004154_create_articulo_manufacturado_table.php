@@ -15,6 +15,7 @@ return new class extends Migration
             $table->double('precioVenta');
             $table->double('precioCosto');
             $table->integer('tiempoEstimado');
+            $table->foreignId('categoria_id')->constrained('categoria_articulo_manufacturado')->onDelete('cascade');
             $table->timestamps();
         });
     }

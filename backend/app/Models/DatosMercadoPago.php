@@ -11,7 +11,7 @@ class DatosMercadoPago extends Model
 
     protected $table = 'datos_mercado_pago';
 
-    protected $fillable = ['date_created', 'date_approved', 'date_last_updated', 'payment_type_id', 'payment_method_id', 'status', 'status_detail'];
+    protected $fillable = ['factura_venta_id', 'date_created', 'date_approved', 'date_last_updated', 'payment_type_id', 'payment_method_id', 'status', 'status_detail'];
 
     public function facturaVenta()
     {

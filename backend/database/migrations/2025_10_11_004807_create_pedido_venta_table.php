@@ -34,6 +34,7 @@ return new class extends Migration
             $table->date('fechaPedido');
             $table->foreignId('sucursal_empresa_id')->constrained('sucursal_empresas')->onDelete('cascade');
             $table->foreignId('empleado_id')->constrained('empleado')->onDelete('cascade');
+            $table->foreignId('factura_venta_id')->constrained('factura_venta')->onDelete('cascade');
             $table->timestamps();
         });
     }

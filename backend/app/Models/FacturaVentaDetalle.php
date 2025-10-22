@@ -11,10 +11,15 @@ class FacturaVentaDetalle extends Model
 
     protected $table = 'factura_venta_detalle';
 
-    protected $fillable = ['cantidad', 'subtotal'];
+    protected $fillable = ['pedido_venta_id', 'factura_venta_id', 'cantidad', 'subtotal', 'articulo_manufacturado_id'];
 
     public function FacturaVenta()
     {
         return $this->belongsTo(FacturaVenta::class, 'factura_venta_id');
+    }
+
+    public function articuloManufacturado()
+    {
+        return $this->belongsTo(ArticuloManufacturado::class, 'articulo_manufacturado_id');
     }
 }

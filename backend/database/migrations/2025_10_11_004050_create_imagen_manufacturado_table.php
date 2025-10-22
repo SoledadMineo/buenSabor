@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('imagen_manufacturado', function (Blueprint $table) {
             $table->id();
             $table->string('denominacion');
+            $table->foreignId('articulo_manufacturado_id')->constrained('imagen_manufacturado')->onDelete('cascade');
             $table->timestamps();
         });
     }

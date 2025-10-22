@@ -11,11 +11,15 @@ class PromocionDetalle extends Model
 
     protected $table = 'promocion_detalle';
 
-    protected $fillable = ['cantidad'];
+    protected $fillable = ['cantidad', 'promocion_id', 'articulo_manufacturado_id',];
 
     public function promocion()
     {
         return $this->belongsTo(Promocion::class, 'promocion_id');
     }
 
+    public function articuloManufacturado()
+    {
+        return $this->belongsTo(ArticuloManufacturado::class, 'articulo_manufacturado_id');
+    }
 }

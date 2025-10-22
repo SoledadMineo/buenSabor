@@ -13,7 +13,8 @@ return new class extends Migration
             $table->foreignId('pedido_venta_id')->constrained('pedido_venta')->onDelete('cascade');
             $table->foreignId('factura_venta_id')->constrained('factura_venta')->onDelete('cascade');
             $table->double('cantidad');
-            $table->double('sub_total');
+            $table->double('subtotal');
+            $table->foreignId('articulo_manufacturado_id')->constrained('articulo_manufacturado')->onDelete('cascade');
             $table->timestamps();
         });
     }

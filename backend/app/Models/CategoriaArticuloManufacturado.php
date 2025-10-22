@@ -11,9 +11,7 @@ class CategoriaArticuloManufacturado extends Model
 
     protected $table = 'categoria_articulo_manufacturado';
 
-    protected $fillable = [
-        'denominacion'
-    ];
+    protected $fillable = ['denominacion'];
 
     public function articuloManufacturado()
     {

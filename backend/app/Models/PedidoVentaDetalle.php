@@ -11,7 +11,7 @@ class PedidoVentaDetalle extends Model
 
     protected $table = 'pedido_venta_detalle';
 
-    protected $fillable = ['cantidad', 'subtotal'];
+    protected $fillable = ['pedido_venta_id', 'articulo_manufacturado_id', 'promocion_id', 'cantidad', 'subtotal'];
 
     public function pedidoVenta()
     {
