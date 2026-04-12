@@ -9,7 +9,7 @@ class ArticuloInsumo extends Model
 {
     use HasFactory;
 
-    protected $table = 'articulo_insumos';
+    protected $table = 'articulo_insumo';
 
     protected $fillable = [
         'denominacion',
@@ -39,7 +39,7 @@ class ArticuloInsumo extends Model
 
     public function padre()
     {
-        return $this->belongsTo(ArticuloInsumo::class, 'padre_id'); 
+        return $this->belongsTo(ArticuloInsumo::class, 'padre_id');
     }
 
     public function hijo()
