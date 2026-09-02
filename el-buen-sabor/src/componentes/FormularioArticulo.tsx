@@ -8,22 +8,26 @@ function FormularioArticulo() {
   const [tipo, setTipo] = useState<TipoArticulo>("insumo");
 
   return (
-    <div className="container">
-      <h2>Nuevo Artículo</h2>
+    <div className="card shadow m-4">
+      <div className="card-header bg-dark text-white">
+        <h4 className="mb-0"> Alta de Producto</h4>
+      </div>
 
-      {/* SELECTOR DE TIPO */}
-      <select
-        className="form-select mb-4"
-        value={tipo}
-        onChange={(e) => setTipo(e.target.value as TipoArticulo)}
-      >
-        <option value="insumo">Insumo</option>
-        <option value="manufacturado">Manufacturado</option>
-      </select>
+      <div className="card-body">
+        {/* SELECTOR DE TIPO */}
+        <select
+          className="form-select"
+          value={tipo}
+          onChange={(e) => setTipo(e.target.value as TipoArticulo)}
+        >
+          <option value="insumo">Insumo</option>
+          <option value="manufacturado">Manufacturado</option>
+        </select>
 
-      {/* FORMULARIO SEGÚN TIPO */}
-      {tipo === "insumo" && <FormInsumo />}
-      {tipo === "manufacturado" && <FormManufacturado />}
+        {/* FORMULARIO SEGÚN TIPO */}
+        {tipo === "insumo" && <FormInsumo />}
+        {tipo === "manufacturado" && <FormManufacturado />}
+      </div>
     </div>
   );
 }

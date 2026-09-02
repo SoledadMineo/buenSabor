@@ -6,6 +6,7 @@ import Menu from "./componentes/Menu.tsx";
 import Detalle from "./componentes/Detalle.tsx";
 import GrillaArticulo from "./componentes/GrillaArticulo.tsx";
 import FormularioArticulo from "./componentes/FormularioArticulo.tsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
