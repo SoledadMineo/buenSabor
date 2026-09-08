@@ -34,7 +34,11 @@ function AdminArticulos() {
       <select
         className="form-select w-25 mb-3"
         value={filtro}
-        onChange={(e) => setFiltro(e.target.value as any)}
+        onChange={(e) =>
+          setFiltro(
+            e.target.value as "todos" | "insumo" | "manufacturado",
+          )
+        }
       >
         <option value="todos">Todos</option>
         <option value="insumo">Insumos</option>

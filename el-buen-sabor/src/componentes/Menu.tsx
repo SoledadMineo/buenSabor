@@ -19,10 +19,6 @@ function Menu() {
 
   type ArticuloConTipo = ArticuloInsumoConTipo | ArticuloManufacturadoConTipo;
 
-  const [insumos, setInsumos] = useState<ArticuloInsumo[]>([]);
-  const [manufacturados, setManufacturados] = useState<ArticuloManufacturado[]>(
-    [],
-  );
   const [articulos, setArticulos] = useState<ArticuloConTipo[]>([]);
 
   const getArticulos = async () => {
@@ -32,11 +28,6 @@ function Menu() {
 
     console.log("Insumos Data:", insumosData);
     console.log("Manufacturados Data:", manufacturadosData);
-
-    setInsumos(insumosData);
-    setManufacturados(manufacturadosData);
-
-    //    setArticulos([...insumosData, ...manufacturadosData]);
 
     setArticulos([
       ...insumosData.map((i) => ({ ...i, tipo: "insumo" as const })),

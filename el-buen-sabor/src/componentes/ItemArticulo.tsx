@@ -1,18 +1,8 @@
-import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
 function Articulo({ denominacion = "", precioVenta = 0 }) {
-  const [contador, incrementarContador] = useState(0);
-  // const texto = initialHayStock ? 'Comprar' : 'Sin stock';
-  // const buttonClassName = initialHayStock
-  //     ? 'buttonCompra'
-  //     : 'buttonSinStock';
-  // const handleClick = () => {
-  //     initialHayStock ? incrementarContador((contador) => contador + 1) : 0;
-  // }
-  return;
-  <>
+  return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
       <Card.Body>
@@ -32,5 +22,7 @@ function Articulo({ denominacion = "", precioVenta = 0 }) {
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
-  </>;
+  );
 }
+
+export default Articulo;

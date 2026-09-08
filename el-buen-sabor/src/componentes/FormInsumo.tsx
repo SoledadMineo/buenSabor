@@ -7,6 +7,11 @@ import {
 } from "../servicios/FuncionesApi";
 import Alert from "react-bootstrap/Alert";
 
+interface OpcionSeleccionable {
+  id: number;
+  denominacion: string;
+}
+
 function FormInsumo() {
   const [articulo, setArticulo] = useState({
     denominacion: "",
@@ -25,8 +30,8 @@ function FormInsumo() {
   //   categoria_articulo_id: articulo.categoria_articulo_id,
   // };
 
-  const [unidades, setUnidades] = useState<any[]>([]);
-  const [categorias, setCategorias] = useState<any[]>([]);
+  const [unidades, setUnidades] = useState<OpcionSeleccionable[]>([]);
+  const [categorias, setCategorias] = useState<OpcionSeleccionable[]>([]);
   const [mensaje, setMensaje] = useState("");
   const [tipoMensaje, setTipoMensaje] = useState<
     "success" | "danger" | "warning" | "info"
