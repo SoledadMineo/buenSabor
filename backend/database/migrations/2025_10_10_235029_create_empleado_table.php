@@ -17,7 +17,8 @@ return new class extends Migration
             $table->enum('rol', [
                 'admin',
                 'empleado',
-                'cliente'])->default('admin');
+                'cliente'
+            ])->default('admin');
             $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade');
             $table->timestamps();
         });
@@ -26,10 +27,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('empleado');
-    }
-
-    public function usuario()
-    {
-        return $this->hasOne(Usuario::class);
     }
 };

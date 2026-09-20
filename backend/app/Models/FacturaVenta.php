@@ -15,7 +15,7 @@ class FacturaVenta extends Model
 
     public function pedidoVenta()
     {
-        return $this->hasOne(PedidoVenta::class);
+        return $this->belongsTo(PedidoVenta::class, 'pedido_venta_id');
     }
 
     public function detalles()

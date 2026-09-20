@@ -11,7 +11,7 @@ class PedidoVenta extends Model
 
     protected $table = 'pedido_venta';
 
-    protected $fillable = ['horaEstimadaFinalizacion', 'subtotal', 'descuento', 'gastosEnvio', 'total', 'totalCosto', 'estado', 'tipoEnvio', 'formaPago', 'fechaPedido', 'sucursal_empresa_id', 'empleado_id', 'factura_venta_id'];
+    protected $fillable = ['horaEstimadaFinalizacion', 'subtotal', 'descuento', 'gastosEnvio', 'total', 'totalCosto', 'estado', 'tipoEnvio', 'formaPago', 'fechaPedido', 'sucursal_empresa_id', 'empleado_id', 'cliente_id'];
 
     public function sucursalEmpresa()
     {
@@ -23,13 +23,18 @@ class PedidoVenta extends Model
         return $this->belongsTo(Empleado::class);
     }
 
-    public function facturas()
+    public function factura()
     {
-        return $this->belongsTo(FacturaVenta::class);
+        return $this->hasOne(FacturaVenta::class, 'pedido_venta_id');
     }
 
     public function detalles()
     {
         return $this->hasMany(PedidoVentaDetalle::class, 'pedido_venta_id');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class, 'cliente_id');
     }
 }

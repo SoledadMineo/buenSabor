@@ -10,12 +10,12 @@ class Empleado extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nombre', 'apellido', 'telefono', 'email', 'perfil'];
+    protected $fillable = ['nombre', 'apellido', 'telefono', 'email', 'rol', 'usuario_id'];
 
     protected $table = 'empleado';
 
     protected $casts = [
-        'perfil' => Rol::class,
+        'rol' => Rol::class,
     ];
 
     public function pedidos()
@@ -27,5 +27,4 @@ class Empleado extends Model
     {
         return $this->belongsTo(Usuario::class);
     }
-
 }

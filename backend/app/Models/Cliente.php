@@ -23,4 +23,8 @@ class Cliente extends Model
         return $this->belongsTo(Usuario::class);
     }
 
+    public function pedidos()
+    {
+        return $this->hasMany(PedidoVenta::class, 'cliente_id');
+    }
 }

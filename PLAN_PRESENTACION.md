@@ -1,25 +1,88 @@
 # Plan de finalización de El Buen Sabor
 
-Período objetivo: 6 de septiembre al 8 de noviembre de 2026.
+Objetivo actualizado al 20 de septiembre: cerrar durante noviembre de 2026
+para presentar en diciembre. No hay una fecha de entrega obligatoria confirmada.
 
 Disponibilidad estimada:
 
-- Lunes a viernes: 2 horas por día.
-- Sábados y domingos: 4 a 6 horas por día.
-- Total: 18 a 22 horas semanales.
+- Lunes a viernes: 1 hora por día.
+- Sábados y domingos: al menos 3 horas (se asumen 3 horas cada día).
+- Base de planificación: 11 horas semanales; las horas extra no se comprometen.
+- Planificar 8 a 9 horas de tareas y reservar 2 a 3 para pruebas e imprevistos.
 
-## Reglas de trabajo
+## Punto de retomada — 20 de septiembre de 2026
+
+- La base configurada responde a `php artisan migrate:status`: todas las
+  migraciones listadas están aplicadas, incluidas las dos del 13 de septiembre.
+  Esto no verifica todavía los flujos ni la reconstrucción desde cero.
+- Hay cambios locales pendientes de commit en los modelos de clientes,
+  empleados, pedidos y facturas, la configuración de autenticación y migraciones.
+- La API tiene consultas de artículos, categorías y unidades, y alta de insumos.
+  Aún no hay rutas de gestión de clientes, empleados, pedidos ni login.
+- `Usuario` todavía extiende `Model`: cambiar el proveedor de autenticación
+  no completa por sí solo el acceso de usuarios.
+- `DatabaseSeeder` no genera los datos de aceptación.
+- Frontend: `npm.cmd run build` completado correctamente el 20 de septiembre.
+- El trabajo sigue en el cierre de la base de la semana 1; la semana 2 no
+  está completada. Las fechas originales de abajo quedan como referencia
+  histórica y no representan compromisos diarios vigentes.
+
+Próximos bloques, en orden:
+
+1. Cerrar y comprobar las relaciones y migraciones actuales; documentar el
+   modelo de datos y resolver los roles requeridos.
+2. Implementar y probar autenticación y permisos.
+3. Completar clientes y empleados de punta a punta, con datos de prueba.
+4. Retomar insumos y manufacturados sobre esa base.
+
+Trabajar con una meta verificable por sesión y reservar margen semanal para
+correcciones. No trasladar automáticamente todas las tareas atrasadas al día
+siguiente ni dar por terminado un módulo solo por tener sus modelos.
+
+## Plan vigente por hitos
+
+Noviembre es un objetivo, no una garantía de completar todo el alcance original.
+La disponibilidad bajó aproximadamente a la mitad. Revisar el alcance y las
+estimaciones cada domingo según los flujos efectivamente terminados.
+
+| Período orientativo | Resultado a comprobar |
+| --- | --- |
+| 21–27 de septiembre | Base revisada, modelo y permisos documentados; definir autenticación |
+| 28 de septiembre–11 de octubre | Acceso y permisos; clientes y empleados con flujo completo |
+| 12–25 de octubre | Insumos, stock y manufacturados con recetas |
+| 26 de octubre–8 de noviembre | Catálogo, carrito y pedido completo con impacto en stock |
+| 9–22 de noviembre | Promociones, facturación y reportes requeridos, ajustando según avance |
+| 23–30 de noviembre | Datos mínimos, pruebas por rol, documentación y ensayo |
+
+Estos bloques son una propuesta inicial; no eliminan requisitos de aceptación.
+Si un bloque se extiende, reestimar los siguientes en lugar de acumular tareas.
+
+### Próxima semana: una meta concreta por sesión
+
+- Lunes (1 h): revisar las relaciones cliente–pedido–factura y anotar pendientes.
+- Martes (1 h): revisar usuario–cliente–empleado y documentar roles requeridos.
+- Miércoles (1 h): revisar recetas e imágenes y completar el diagrama de datos.
+- Jueves (1 h): revisar stock por sucursal y tipos monetarios.
+- Viernes (1 h): definir cómo será el acceso de usuarios y sus criterios de prueba.
+- Sábado (3 h): corregir los problemas priorizados y comprobar migraciones en
+  una base de desarrollo separada, conservando la base actual.
+- Domingo (3 h): probar relaciones, registrar avances y pendientes; usar el
+  margen para lo que no haya entrado y ajustar la siguiente semana.
+
+## Dinámica de cada jornada
 
 Cada jornada comienza revisando la meta y termina con una prueba, un commit y una
 nota breve de lo que queda pendiente. Un módulo solo se considera terminado si
 tiene interfaz, API, validaciones, persistencia y prueba del flujo principal.
 
-## Inicio: domingo 6 de septiembre (4 a 6 h)
+## Cronograma original — referencia histórica
+
+### Inicio: domingo 6 de septiembre (4 a 6 h)
 
 - [x] Auditar frontend, backend y datos existentes.
 - [x] Registrar los requisitos y cantidades mínimas.
 - [x] Corregir la compilación inicial del frontend.
-- [ ] Crear un respaldo exportable de la base MySQL actual.
+- [x] Crear un respaldo exportable de la base MySQL actual (estructura y datos; confirmado por Soledad).
 - [ ] Dibujar el modelo de datos corregido antes de modificar migraciones.
 - [ ] Definir por escrito los roles y permisos de administrador, cajero,
   cocinero, delivery y cliente.
