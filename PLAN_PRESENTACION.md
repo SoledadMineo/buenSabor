@@ -71,6 +71,12 @@ Si un bloque se extiende, reestimar los siguientes en lugar de acumular tareas.
 
 ## Dinámica de cada jornada
 
+Avance del 20 de septiembre: relaciones cliente–pedido–factura verificadas con
+cuatro pruebas automatizadas en SQLite en memoria; suite completa: seis pruebas
+correctas. Se agregó una migración pendiente de aplicar para impedir varias
+facturas por pedido. Falta verificar integridad referencial y reconstrucción
+completa en MySQL de prueba. Detalles en `backend/tests/RELACIONES.md`.
+
 Cada jornada comienza revisando la meta y termina con una prueba, un commit y una
 nota breve de lo que queda pendiente. Un módulo solo se considera terminado si
 tiene interfaz, API, validaciones, persistencia y prueba del flujo principal.

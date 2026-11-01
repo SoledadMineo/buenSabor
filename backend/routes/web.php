@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
+// El grupo web proporciona cookies, sesion y proteccion CSRF al login.
+Route::post('/api/login', [AuthController::class, 'login'])->middleware('throttle:5,1');
+Route::post('/api/logout', [AuthController::class, 'logout']);
 
 /*
 |--------------------------------------------------------------------------

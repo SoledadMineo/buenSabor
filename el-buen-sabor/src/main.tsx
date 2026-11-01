@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App.tsx";
+import Login from "./componentes/Login.tsx";
 import Menu from "./componentes/Menu.tsx";
 import Detalle from "./componentes/Detalle.tsx";
 import GrillaArticulo from "./componentes/GrillaArticulo.tsx";
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Menu />} />
+          <Route path="login" element={<Login />} />
           <Route path="detalle/:tipo/:id" element={<Detalle />} />
           <Route path="/grilla" element={<GrillaArticulo />} />
           <Route
