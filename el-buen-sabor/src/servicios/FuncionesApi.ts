@@ -2,6 +2,8 @@ import type ArticuloAdmin from "../entidades/ArticuloAdmin";
 import type ArticuloInsumo from "../entidades/ArticuloInsumo";
 import type ArticuloManufacturado from "../entidades/ArticuloManufacturado";
 
+const API = import.meta.env.VITE_API_URL ?? `http://${window.location.hostname}:8000`;
+
 // Obtener lista de insumos
 export const getInsumosJSONFetch = async (): Promise<ArticuloInsumo[]> => {
     try {
@@ -43,7 +45,8 @@ export const getManufacturadoById = async (id: number): Promise<ArticuloManufact
 };
 
 export const getArticulosAdmin = async (): Promise<ArticuloAdmin[]> => {
-  const response = await fetch("http://127.0.0.1:8000/api/articulos/admin");
+  const response = await fetch(`${API}/api/articulos/admin`, { credentials: "include" });
+  if (!response.ok) throw new Error("No se pudieron cargar los artículos administrativos");
   return await response.json() as ArticuloAdmin[];
 };
 
@@ -66,8 +69,18 @@ export const getCategoriasArticulo = async () => {
 };
 
 export const saveInsumo = async (data: FormData) => {
-  const response = await fetch("http://127.0.0.1:8000/api/insumos", {
+  const csrfResponse = await fetch(`${API}/sanctum/csrf-cookie`, {
+    credentials: "include",
+    headers: { Accept: "application/json" },
+  });
+  if (!csrfResponse.ok) throw new Error("No se pudo preparar la solicitud segura");
+  const csrfCookie = document.cookie.split("; ").find((item) => item.startsWith("XSRF-TOKEN="));
+  if (!csrfCookie) throw new Error("No se encontró la cookie de seguridad");
+
+  const response = await fetch(`${API}/api/insumos`, {
     method: "POST",
+    credentials: "include",
+    headers: { "X-XSRF-TOKEN": decodeURIComponent(csrfCookie.substring("XSRF-TOKEN=".length)), Accept: "application/json" },
     body: data, // 👈 SIN headers
   });
 

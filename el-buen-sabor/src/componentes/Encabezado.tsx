@@ -67,11 +67,11 @@ const Encabezado = ({ usuario, cargando, saliendo, salir }: Props) => {
                 Inicio
               </Link>
             </li>
-            <li className="nav-item">
+            {usuario?.rol === "admin" && <li className="nav-item">
               <Link className="nav-link" to="/grilla">
-                Grilla
+                Artículos
               </Link>
-            </li>
+            </li>}
             <li className="nav-item">
               <Link className="nav-link" to="/carrito">
                 Carrito

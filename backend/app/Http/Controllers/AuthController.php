@@ -28,11 +28,27 @@ class AuthController extends Controller
         $usuario = Auth::guard('web')->user();
 
         return response()->json([
-            'user' => [
-                'id' => $usuario->id,
-                'username' => $usuario->username,
-            ],
+            'user' => $this->datosSesion($usuario),
         ]);
+    }
+
+    public function sesion(Request $request): JsonResponse
+    {
+        return response()->json($this->datosSesion($request->user()));
+    }
+
+    private function datosSesion(Usuario $usuario): array
+    {
+        $rol = $usuario->empleado?->rol?->value;
+        if (!$rol && $usuario->cliente) {
+            $rol = 'cliente';
+        }
+
+        return [
+            'id' => $usuario->id,
+            'username' => $usuario->username,
+            'rol' => $rol,
+        ];
     }
 
     public function logout(Request $request): JsonResponse

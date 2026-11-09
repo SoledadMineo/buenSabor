@@ -1,6 +1,7 @@
 export interface UsuarioSesion {
   id: number;
   username: string;
+  rol: "admin" | "empleado" | "cliente" | null;
 }
 
 const API = import.meta.env.VITE_API_URL ?? `http://${window.location.hostname}:8000`;
