@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ArticuloInsumo extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'articulo_insumo';
 
@@ -21,6 +22,20 @@ class ArticuloInsumo extends Model
         'unidad_medida_id',
         'padre_id'
     ];
+
+    protected $casts = [
+        'esParaElaborar' => 'boolean',
+    ];
+
+    // tipo: 'elaboracion' (se usa en recetas) o 'venta' (se vende directo, ej. bebidas).
+    public function scopeDeTipo($query, ?string $tipo)
+    {
+        return match ($tipo) {
+            'elaboracion' => $query->where('esParaElaborar', true),
+            'venta' => $query->where('esParaElaborar', false),
+            default => $query,
+        };
+    }
 
     public function categoria()
     {
@@ -69,6 +84,6 @@ class ArticuloInsumo extends Model
 
     public function sucursales()
     {
-        return $this->hasMany(SucursalInsumo::class);
+        return $this->hasMany(SucursalInsumo::class, 'articulo_insumo_id');
     }
 }

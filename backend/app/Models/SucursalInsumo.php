@@ -9,7 +9,15 @@ class SucursalInsumo extends Model
 {
     use HasFactory;
 
+    protected $table = 'sucursal_insumo';
+
     protected $fillable = ['stockActual', 'stockMinimo', 'stockMaximo', 'sucursal_empresa_id', 'articulo_insumo_id'];
+
+    protected $casts = [
+        'stockActual' => 'integer',
+        'stockMinimo' => 'integer',
+        'stockMaximo' => 'integer',
+    ];
 
     public function sucursalEmpresa()
     {
@@ -18,6 +26,6 @@ class SucursalInsumo extends Model
 
     public function articuloInsumo()
     {
-        return $this->belongsTo(ArticuloInsumo::class);
+        return $this->belongsTo(ArticuloInsumo::class, 'articulo_insumo_id');
     }
 }
