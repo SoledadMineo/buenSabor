@@ -24,7 +24,7 @@ class ArticuloManufacturadoDetalle extends Model
 
     public function articuloInsumo()
     {
-        return $this->belongsTo(ArticuloInsumo::class, 'articulo_insumo_id');
+        return $this->belongsTo(ArticuloInsumo::class, 'articulo_insumo_id')->withTrashed();
     }
 
 }

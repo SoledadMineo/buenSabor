@@ -15,7 +15,7 @@ class CategoriaArticuloManufacturado extends Model
 
     public function articuloManufacturado()
     {
-        return $this->hasMany(ArticuloManufacturado::class);
+        return $this->hasMany(ArticuloManufacturado::class, 'categoria_id');
     }
 
 }

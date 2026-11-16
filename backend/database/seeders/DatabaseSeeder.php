@@ -77,5 +77,8 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         });
+
+        $this->call(InsumoSeeder::class);
+        $this->call(ManufacturadoSeeder::class);
     }
 }

@@ -15,7 +15,7 @@ class ImagenManufacturado extends Model
 
     public function articulo()
     {
-        return $this->belongTo(ArticuloManufacturado::class);
+        return $this->belongsTo(ArticuloManufacturado::class);
     }
 
 }
