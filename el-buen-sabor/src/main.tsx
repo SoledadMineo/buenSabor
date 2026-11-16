@@ -10,16 +10,20 @@ import FormularioArticulo from "./componentes/FormularioArticulo.tsx";
 import FormInsumo from "./componentes/FormInsumo.tsx";
 import FormManufacturado from "./componentes/FormManufacturado.tsx";
 import StockInsumo from "./componentes/StockInsumo.tsx";
+import Carrito from "./componentes/Carrito.tsx";
+import { CarritoProvider } from "./contexto/CarritoProvider.tsx";
 import RutaAdmin from "./componentes/RutaAdmin.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <CarritoProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Menu />} />
           <Route path="login" element={<Login />} />
+          <Route path="carrito" element={<Carrito />} />
           <Route path="detalle/:tipo/:id" element={<Detalle />} />
           <Route element={<RutaAdmin />}>
             <Route path="grilla" element={<GrillaArticulo />} />
@@ -31,5 +35,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    </CarritoProvider>
   </React.StrictMode>,
 );

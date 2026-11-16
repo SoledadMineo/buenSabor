@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/buensabor.png";
 import { useState } from "react";
 import type { UsuarioSesion } from "../servicios/AuthApi";
+import { useCarrito } from "../contexto/carrito";
 
 interface Props {
   usuario: UsuarioSesion | null;
@@ -12,6 +13,7 @@ interface Props {
 
 const Encabezado = ({ usuario, cargando, saliendo, salir }: Props) => {
   const [abierto, setAbierto] = useState(false);
+  const { cantidadTotal } = useCarrito();
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm">
       <div className="container-fluid px-4 align-items-center">
@@ -75,6 +77,7 @@ const Encabezado = ({ usuario, cargando, saliendo, salir }: Props) => {
             <li className="nav-item">
               <Link className="nav-link" to="/carrito">
                 Carrito
+                {cantidadTotal > 0 && <span className="badge bg-danger ms-1">{cantidadTotal}</span>}
               </Link>
             </li>
           </ul>
