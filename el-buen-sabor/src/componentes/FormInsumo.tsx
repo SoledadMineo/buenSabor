@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   getUnidadesMedida,
   getCategoriasArticulo,
+  getInsumoById,
   saveInsumo,
 } from "../servicios/FuncionesApi";
+import { actualizarInsumo } from "../servicios/InsumosApi";
 import Alert from "react-bootstrap/Alert";
 
 interface OpcionSeleccionable {
@@ -38,6 +40,7 @@ function FormInsumo() {
   >("success");
   const [imagen, setImagen] = useState<File | null>(null);
   const navigate = useNavigate();
+  const { id } = useParams();
   const previewImagen = imagen ? URL.createObjectURL(imagen) : null;
   const guardar = async () => {
     const error = validar();
@@ -63,7 +66,11 @@ function FormInsumo() {
     }
 
     try {
-      await saveInsumo(formData);
+      if (id) {
+        await actualizarInsumo(Number(id), formData);
+      } else {
+        await saveInsumo(formData);
+      }
 
       setTipoMensaje("success");
       setMensaje("✅ Producto guardado correctamente");
@@ -71,9 +78,9 @@ function FormInsumo() {
       setTimeout(() => {
         navigate("/grilla");
       }, 1500);
-    } catch {
+    } catch (e) {
       setTipoMensaje("danger");
-      setMensaje("❌ Error al guardar el producto");
+      setMensaje(`❌ ${(e as Error).message || "Error al guardar el producto"}`);
     }
   };
 
@@ -112,6 +119,28 @@ function FormInsumo() {
 
     cargarCombos();
   }, []);
+
+  // Modo edición: carga los datos actuales del insumo.
+  useEffect(() => {
+    if (!id) return;
+    getInsumoById(Number(id))
+      .then((i) => {
+        // La API devuelve los nombres de columna de la base (snake_case).
+        const d = i as unknown as Record<string, string | number | boolean>;
+        setArticulo({
+          denominacion: String(d.denominacion),
+          precioCompra: String(d.precioCompra),
+          precioVenta: String(d.precioVenta),
+          esParaElaborar: Boolean(d.esParaElaborar),
+          unidad_medida_id: Number(d.unidad_medida_id),
+          categoria_articulo_id: Number(d.categoria_articulo_id),
+        });
+      })
+      .catch(() => {
+        setTipoMensaje("danger");
+        setMensaje("❌ No se pudo cargar el insumo");
+      });
+  }, [id]);
 
   return (
     <>
